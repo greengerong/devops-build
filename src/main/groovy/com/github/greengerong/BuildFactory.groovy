@@ -39,8 +39,7 @@ class BuildFactory {
 
         def tools = resolveTools userConfig
         if (!tools) {
-            println "Sorry, We can't auto resolve your build tools, please setup it in your devops.yml."
-            return
+            return userConfig
         }
 
         def stream = this.getClass().getResourceAsStream "/config/${userConfig.language}-${tools}.yml"
