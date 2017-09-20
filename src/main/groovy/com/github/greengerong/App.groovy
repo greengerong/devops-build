@@ -5,7 +5,7 @@ class App {
     static void main(def args) {
         def phase = args ? args[0] : ''
         if (!phase) {
-            println "Please input your build phase, like devops [build/sonar/hub/publish/deploy/...]"
+            println "Please input your build phase, like devops [build/sonar/hub/publish/deploy/tag...]"
             System.exit 1
         }
         def params = parseParams args
