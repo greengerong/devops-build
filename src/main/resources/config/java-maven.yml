@@ -1,0 +1,15 @@
+---
+name: devops build
+build:
+  command: echo 'hello'
+  assemblies:
+  - "**/*.jar"
+deploy:
+  type: UCD
+  params:
+    appName: ''
+specs:
+  e2e:
+    command: ''
+  api:
+    command: ''

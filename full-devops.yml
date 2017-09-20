@@ -1,0 +1,4 @@
+---
+name: dps-build
+language: java
+tools: maven
