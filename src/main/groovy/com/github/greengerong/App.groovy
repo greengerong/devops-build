@@ -1,21 +1,38 @@
 package com.github.greengerong
 
+import com.github.greengerong.phase.Phase
+import org.reflections.Reflections
+
 class App {
     static final VERSION = "1.0.0"
 
     static void main(def args) {
         def phase = args ? args[0] : ''
         if (!phase) {
-            println "Please input your build phase, like devops [build/sonar/hub/publish/deploy/tag...]"
+            println "Please input your build phase. You can use `devops phase` to find all phases"
             System.exit 1
         }
         dummyVersion phase
+        dummyPhase phase
         def params = parseParams args
         def factory = new BuildFactory()
         def result = factory.exec phase, params
         if (!result) {
             println 'DevOps build failure, exit with 1.'
             System.exit 1
+        }
+    }
+
+    static def dummyPhase(def phase) {
+        if (phase == 'phase') {
+            println "DevOps build phase:"
+
+            new Reflections(Phase.class.getPackage().name)
+                    .getSubTypesOf(Phase.class)
+                    .each {
+                println "devops ${it.simpleName.replaceAll('Phase$', '').uncapitalize()}"
+            }
+            System.exit 0
         }
     }
 
