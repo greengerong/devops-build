@@ -4,12 +4,4 @@ build:
   command: mvn clean package
   assemblies:
   - "**/*.jar"
-deploy:
-  type: UCD
-  params:
-    appName: ''
-specs:
-  e2e:
-    command: ''
-  api:
-    command: ''
+publish: mvn clean deploy

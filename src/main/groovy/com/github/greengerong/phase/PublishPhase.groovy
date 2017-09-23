@@ -7,7 +7,9 @@ class PublishPhase implements Phase {
         println 'in PublishPhase exec'
         println "build config: ${buildConfig}"
         println "build params: ${params}"
-        System.out << "publish".execute().inputStream
+        // download jar from jenkins master
+        //
+        System.out << buildConfig.publish.execute().inputStream
 
         return true
     }
