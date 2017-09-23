@@ -9,7 +9,7 @@ class Pipeline {
 
     static def version() {
         def pipelineEnv = System.getenv('PIPELINE_ENV')
-        if (['CI', 'DEV'].contains(pipelineEnv.toUpperCase())) {
+        if (['CI', 'DEV'].contains(pipelineEnv?.toUpperCase())) {
             def pipelineName = System.getenv('PIPELINE_NAME')
             "${pipelineName}-${Pipeline.pipelineNumber()}"
         } else {
