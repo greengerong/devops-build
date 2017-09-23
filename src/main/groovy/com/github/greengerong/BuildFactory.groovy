@@ -52,6 +52,7 @@ class BuildFactory {
     }
 
     private def mixUserConfig(buildConfig, userConfig) {
+        // TODO: change to deep diff
         buildConfig.putAll(userConfig)
         buildConfig
     }
