@@ -1,7 +1,7 @@
 ---
 name: devops build
 build:
-  command: echo 'hello'
+  command: mvn clean package
   assemblies:
   - "**/*.jar"
 deploy:
