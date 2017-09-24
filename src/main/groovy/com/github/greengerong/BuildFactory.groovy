@@ -51,9 +51,17 @@ class BuildFactory {
         }
     }
 
-    private def mixUserConfig(buildConfig, userConfig) {
-        // TODO: change to deep diff
-        buildConfig.putAll(userConfig)
+    private def mixUserConfig(Map buildConfig, Map userConfig) {
+        userConfig.entrySet().each {
+            if (it.value instanceof Map) {
+                def buildConfigValue = buildConfig.get(it.key) ? buildConfig.get(it.key) : new LinkedHashMap()
+                buildConfig.put(it.key, buildConfigValue)
+                buildConfig.put(it.key, mixUserConfig(buildConfigValue, it.value))
+            } else {
+                buildConfig.put(it.key, userConfig.get(it.key))
+            }
+
+        }
         buildConfig
     }
 
