@@ -1,3 +1,5 @@
 ---
 name: dps-build
 language: java
+build:
+  command: mvn clean install
