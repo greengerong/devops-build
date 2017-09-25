@@ -7,6 +7,7 @@ class App {
     static final VERSION = "1.0.0"
 
     static void main(def args) {
+        dummyBanners()
         def phase = args ? args[0] : ''
         if (!phase) {
             println "Please input your build phase. You can use `devops phase` to find all phases"
@@ -21,6 +22,13 @@ class App {
             println 'DevOps build failure, exit with 1.'
             System.exit 1
         }
+
+    }
+
+    static def dummyBanners() {
+        // generate banner url: http://patorjk.com/software/taag/#p=testall&f=Blocks&t=CMB%20DevOps
+        // Font Name: Big Money-nw
+        System.out << App.class.getResourceAsStream('/banners/devops.txt').text
     }
 
     static def dummyPhase(def phase) {

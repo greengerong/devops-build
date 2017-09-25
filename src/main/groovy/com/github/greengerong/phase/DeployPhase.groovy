@@ -1,5 +1,6 @@
 package com.github.greengerong.phase
 
+import com.github.greengerong.utils.Shell
 
 class DeployPhase implements Phase {
 
@@ -7,8 +8,7 @@ class DeployPhase implements Phase {
         println 'in DeployPhase exec'
         println "build config: ${buildConfig}"
         println "build params: ${params}"
-        System.out << "deploy".execute().inputStream
 
-        return true
+        return Shell.execute("deploy")
     }
 }

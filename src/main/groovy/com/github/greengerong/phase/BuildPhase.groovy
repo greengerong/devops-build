@@ -1,10 +1,12 @@
 package com.github.greengerong.phase
 
+import com.github.greengerong.utils.Shell
+
 
 class BuildPhase implements Phase {
 
     def exec(buildConfig, params) {
-        System.out << buildConfig.build.command.execute().inputStream
-        return true
+        return Shell.execute(buildConfig.build.command)
     }
+
 }

@@ -1,5 +1,7 @@
 package com.github.greengerong.phase
 
+import com.github.greengerong.utils.Shell
+
 
 class HubPhase implements Phase {
 
@@ -7,8 +9,7 @@ class HubPhase implements Phase {
         println 'in HubPhase exec'
         println "build config: ${buildConfig}"
         println "build params: ${params}"
-        System.out << "hub".execute().inputStream
 
-        return true
+        return Shell.execute("hub")
     }
 }

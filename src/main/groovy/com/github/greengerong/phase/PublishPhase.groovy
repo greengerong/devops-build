@@ -1,5 +1,7 @@
 package com.github.greengerong.phase
 
+import com.github.greengerong.utils.Shell
+
 
 class PublishPhase implements Phase {
 
@@ -9,8 +11,7 @@ class PublishPhase implements Phase {
         println "build params: ${params}"
         // download jar from jenkins master
         //
-        System.out << buildConfig.publish.execute().inputStream
 
-        return true
+        return Shell.execute(buildConfig.publish)
     }
 }
